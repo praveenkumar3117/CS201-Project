@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define PSEUDO_EOF char(129)
 unordered_map<char,long long int>f;
 unordered_map<char,string>mp;
 ofstream Code_file("Huffman_Codes.txt");
@@ -73,11 +74,10 @@ void encrypt()
     
     for(i=0;i<input.size();i++)
     {
-       
-        
         Encoded_file<<mp[input[i]];
-        
     }
+   
+ 
 }
 void show_codes(struct huffmanNode * root,string s)
 {
@@ -125,7 +125,7 @@ void Make_Code_File(struct huffmanNode * root,string s)
     if(root->val=='$' && root->right==NULL && root->left==NULL)
     {
          Code_file<< root->val << ": " << s << "\n";
-          mp[root->val]=s;
+         mp[root->val]=s;
     }
  
    Make_Code_File(root->left, s + "0");
